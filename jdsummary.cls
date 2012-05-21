@@ -135,9 +135,10 @@
 % \sdefi	Side Definition - Word (#1) Definition (#2)
 % \usec	Small Title - Word(#1) - (beneath \section or \subseciton)
 % \ld		Format: Boldword colon & - Word (#1) - used within either gdefi or gsdefi environments
-%\sld	Format: Italicword colon & - Word (#1) - used within either gdefi or gsdefi environments
-% ssep	Small Separator: \\[-1em] Be careful: This breaks easily
-%Environments:
+% \sld	Format: Italicword colon & - Word (#1) - used within either gdefi or gsdefi environments
+
+%%%%%%
+%Environments
 % gdefi	Defines tabularx environment. (Many \defi{}s) Use \ld{word} or \sld{word}, followed by the definition and \\ for every line
 % gsdefi	Defines tabularx environment. (Many \sdefi{}s) Use \ld{word} or \sld{word}, followed by the definition and \\ for every line
 % sit		Defines compact item environment. Takes a title as an argument (#1). Use \item for entry

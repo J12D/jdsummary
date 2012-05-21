@@ -31,6 +31,9 @@
 \usepackage{amsmath}
 \usepackage{tabularx}
 
+%Group content
+\newcommand{\g}[1]{\begin{minipage}{\textwidth}#1\end{minipage}}
+
 %Single Definitions
 \newcommand{\ld}[1]{\textbf{#1}:&}
 \newcommand{\sld}[1]{~~~\textsl{#1}:&}

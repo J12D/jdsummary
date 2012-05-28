@@ -31,6 +31,12 @@
 \usepackage{amsmath}
 \usepackage{tabularx}
 
+
+%Highlight
+\newcommand{\ssec}[1]{
+	\textbf{#1}
+}
+
 %Group content
 \newcommand{\g}[1]{\begin{minipage}{\textwidth}#1\end{minipage}}
 
@@ -80,7 +86,6 @@
 	\textbf{#1}\\
 }
 
-
 %Short enumerations
 \usepackage{enumitem}
 \setlist{nolistsep}
@@ -88,7 +93,7 @@
 {
 	\begin{minipage}{\textwidth}
 		\vspace{1mm}
-		\IfNoValueTF{#1}{}{\textbf{\large #1}}
+		\IfNoValueTF{#1}{}{\ssec{#1}}
 		\begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
 }{
 		\end{itemize}
@@ -99,7 +104,7 @@
 \DeclareDocumentEnvironment{snu}{o}
 {
 	\begin{minipage}{\textwidth}
-		\IfNoValueTF{#1}{}{\textbf{\large #1}}
+		\IfNoValueTF{#1}{}{\ssec{#1}}
 		\begin{enumerate}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
 }{
 		\end{enumerate}

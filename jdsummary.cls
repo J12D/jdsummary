@@ -9,8 +9,15 @@
 \newcommand{\gq}[1]{\glqq #1\grqq}
 
 \makeatletter
-	\newcommand{\course}[1]{\def \@course {#1}}
+	\newcommand{\course}[1]{\def \@course {#1} \title{}}
 	\newcommand{\semester}[1]{\def \@semester {#1}}
+\makeatother
+
+%Title
+\makeatletter
+\RenewDocumentCommand{\title}{}{
+	\def \@title {Zusammenfassung \@course}
+}
 \makeatother
 
 %Geometry
@@ -125,7 +132,7 @@
 		\ifx \@course \@empty
 			\relax
 		\else
-			\fancyhead[R]{Zusammenfassung \@course}
+			\fancyhead[R]{\title}
 		\fi
 		
 		\fancyhead[L]{JD}

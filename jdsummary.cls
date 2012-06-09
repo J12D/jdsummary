@@ -38,6 +38,12 @@
 \usepackage{amsmath}
 \usepackage{tabularx}
 
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+
+\renewcommand{\emph}[1]{
+	\textbf{\textcolor{Orange}{#1}}
+}
 
 %Highlight
 \newcommand{\ssec}[1]{

@@ -83,7 +83,7 @@
 \DeclareDocumentEnvironment{gdefi}{o}{
 		\IfNoValueTF{#1}{}
 			{
-			\textbf{\large #1}\\[1mm]
+			\textbf{#1}\\[1mm]
 			}
 		\tabularx{\textwidth}{l@{~}X}
 }{
@@ -94,7 +94,7 @@
 \DeclareDocumentEnvironment{gsdefi}{o}{
 	\IfNoValueTF{#1}{}
 		{
-		\textbf{\large #1}\\
+		\textbf{#1}\\[1mm]
 		}
 	\tabularx{\textwidth}{l@{~}X}
 }{

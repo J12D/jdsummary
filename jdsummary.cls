@@ -50,6 +50,14 @@
 	\textbf{#1}
 }
 
+\newcommand{\lsec}[1]{
+	{
+		\large
+		\textbf{#1}\\
+	}
+}
+
+
 %Group content
 \newcommand{\g}[1]{\begin{minipage}{\textwidth}#1\end{minipage}}
 

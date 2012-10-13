@@ -6,19 +6,18 @@
 
 \usepackage{xparse}
 
-\newcommand{\gq}[1]{\glqq #1\grqq}
-
 \makeatletter
-	\newcommand{\course}[1]{\def \@course {#1} \title{}}
-	\newcommand{\semester}[1]{\def \@semester {#1}}
+\newcommand*\DefVar[1]{\@namedef{#1}##1{\global\@namedef{get#1}{##1}}}
 \makeatother
 
-%Title
-\makeatletter
-\RenewDocumentCommand{\title}{}{
-	\def \@title {Zusammenfassung \@course}
-}
-\makeatother
+\DefVar{course}
+
+%%Title
+%\makeatletter
+%\RenewDocumentCommand{\title}{}{
+%	\def \@title {\@course}
+%}
+%\makeatother
 
 %Geometry
 \usepackage[top=2.5cm,
@@ -29,7 +28,6 @@
 \usepackage[parfill]{parskip}
 
 %Language & Fonts
-\usepackage[ngerman]{babel}
 \usepackage{fontspec,xltxtra,xunicode}
 \defaultfontfeatures{Mapping=tex-text}
 
@@ -42,7 +40,7 @@
 \usepackage[usenames,dvipsnames]{xcolor}
 
 \renewcommand{\emph}[1]{
-	\textbf{\textcolor{Orange}{#1}}
+	\textcolor{red}{#1}
 }
 
 %Highlight
@@ -57,9 +55,18 @@
 	}
 }
 
+%Title
+\newcommand{\usec}[1]{
+	\textbf{#1}\\
+}
 
-%Group content
-\newcommand{\g}[1]{\begin{minipage}{\textwidth}#1\end{minipage}}
+\newcommand{\esec}[1]{
+	\textbf{#1}\nopagebreak
+}
+
+
+%%Group content
+%\newcommand{\g}[1]{\begin{minipage}{\textwidth}#1\end{minipage}}
 
 %Single Definitions
 \newcommand{\ld}[1]{\textbf{#1}:&}
@@ -94,43 +101,11 @@
 \DeclareDocumentEnvironment{gsdefi}{o}{
 	\IfNoValueTF{#1}{}
 		{
-		\textbf{#1}\\[1mm]
+		\textbf{#1}\nopagebreak\\[1mm]
 		}
 	\tabularx{\textwidth}{l@{~}X}
 }{
 	\endtabularx
-}
-
-
-%Title
-\newcommand{\usec}[1]{
-	\textbf{#1}\\
-}
-
-%Short enumerations
-\usepackage{enumitem}
-\setlist{nolistsep}
-\DeclareDocumentEnvironment{sit}{o}
-{
-	\begin{minipage}{\textwidth}
-		\vspace{1mm}
-		\IfNoValueTF{#1}{}{\ssec{#1}}
-		\begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
-}{
-		\end{itemize}
-		\vspace{1mm}
-	\end{minipage}
-}
-
-\DeclareDocumentEnvironment{snu}{o}
-{
-	\begin{minipage}{\textwidth}
-		\IfNoValueTF{#1}{}{\ssec{#1}}
-		\begin{enumerate}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt]
-}{
-		\end{enumerate}
-		\vspace{1mm}
-	\end{minipage}
 }
 
 \usepackage{float}
@@ -143,10 +118,10 @@
 	\fancyhf{}
 
 	\newcommand{\updateheaders}{
-		\ifx \@course \@empty
+		\ifx \getcourse \@empty
 			\relax
 		\else
-			\fancyhead[R]{\title}
+			\fancyhead[R]{\getcourse}
 		\fi
 		
 		\fancyhead[L]{JD}

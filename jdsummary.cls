@@ -39,7 +39,7 @@
 \usepackage{color}
 \usepackage[usenames,dvipsnames]{xcolor}
 
-\renewcommand{\emph}[1]{
+\newcommand{\remph}[1]{
 	\textcolor{red}{#1}
 }
 

@@ -74,27 +74,39 @@
 
 \renewcommand{\tabcolsep}{0pt}
 
-\newcommand{\defi}[2]{
+\newcommand{\defi}[2]{%
+\ifingdefi
+	\ld{#1}#2\\
+\else
 	\begin{tabularx}{\textwidth}{l@{~}X}
 	\ld{#1}#2\\
-	\end{tabularx}
+	\end{tabularx}%\vspace*{-0.5\baselineskip}
+\fi
 }
 
-\newcommand{\sdefi}[2]{
+\newcommand{\subdefi}[2]{
+\ifingdefi
+	\sld{#1}#2\\
+\else
 	\begin{tabularx}{\textwidth}{l@{~}X}
 	\sld{#1}#2\\
-	\end{tabularx}
+	\end{tabularx}\vspace*{-0.5\baselineskip}
+\fi
 }
 
+\newif\ifingdefi
+
 %Group of Definitions
-\DeclareDocumentEnvironment{gdefi}{o}{
-		\IfNoValueTF{#1}{}
-			{
-			\textbf{#1}\\[1mm]
-			}
-		\tabularx{\textwidth}{l@{~}X}
+\DeclareDocumentEnvironment{gdefi}{o}
+{	\ingdefitrue
+	\IfNoValueTF{#1}{}
+	{
+		\nopagebreak\textbf{#1}\nopagebreak\\[1mm]\nopagebreak
+	}
+	\tabularx{\textwidth}{l@{~}X}
 }{
-		\endtabularx
+	\endtabularx
+	\ingdefifalse
 }
 
 
@@ -115,14 +127,14 @@
 	\usepackage{fancyhdr}
 	\pagestyle{fancy}
 	\renewcommand{\footrulewidth}{\headrulewidth}
-	\fancyhf{}
+%	\fancyhf{}
 
 	\newcommand{\updateheaders}{
-		\ifx \getcourse \@empty
-			\relax
-		\else
-			\fancyhead[R]{\getcourse}
-		\fi
+%		\ifx \getcourse \@empty
+%			\relax
+%		\else
+%			\fancyhead[R]{\getcourse}
+%		\fi
 		
 		\fancyhead[L]{JD}
 	}
